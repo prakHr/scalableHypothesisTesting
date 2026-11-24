@@ -25,8 +25,7 @@ def get_hypothesis_tests_from_csv_file(csv_file_path,progress_bar):
         results.append(my_dict)
     num_cores = max(multiprocessing.cpu_count()//2,1)
     with WorkerPool(n_jobs=num_cores,daemon=False) as pool:
-        results = pool.map(get_hypothesis_test_from_csv_file, results,
-progress_bar = progress_bar)
+        results = pool.map(get_hypothesis_test_from_csv_file, results, progress_bar = progress_bar)
     return results
 
 if __name__=="__main__":
